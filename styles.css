@@ -1,0 +1,136 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.5;
+  color: #667085;
+}
+
+section {
+  margin-bottom: 35px;
+  width: 80%;
+}
+p {
+  margin: 20px;
+}
+.main-header {
+  font-size: 2.5rem;
+}
+header {
+  color: black;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.inline-code {
+  color: hsla(240, 100%, 50%, 0.705);
+  font-family: 'Ubuntu Sans Mono', monospace;
+}
+.code-block {
+  background-color: hsla(210, 17%, 95%, 0.534);
+  display: block;
+  padding: 15px;
+  margin: 20px;
+  border-radius: 4px;
+  text-align: left;
+  line-height: 2;
+  color: hsl(221, 13%, 44%);
+}
+#main-doc {
+  position: absolute;
+  left: 350px;
+
+  padding: 20px;
+}
+
+li {
+  margin: 15px 0 15px 60px;
+}
+
+main a {
+  color: hsla(240, 100%, 50%, 0.596);
+}
+#navbar {
+  width: 350px;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+#navbar header {
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+#navbar a {
+  display: block;
+  padding: 10px 30px;
+  color: #4d4e53;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+#navbar a:hover {
+  background-color: #66708567;
+  color: #343438;
+}
+
+@media screen and (max-width: 700px) {
+  #navbar {
+    height: 100px;
+    width: 100%;
+    padding: 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    background-color: white;
+  }
+  #navbar header {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0;
+    width: 120px;
+    padding: 5px;
+  }
+  #navbar a {
+    text-decoration: none;
+
+    font-size: 0.7rem;
+    padding: 0 5px;
+
+    width: 25%;
+    height: 45px;
+    align-content: center;
+  }
+  .nav-div {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: flex-start;
+    height: 100px;
+  }
+
+  #main-doc {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+
+    padding: 20px;
+    margin: 0 auto;
+  }
+  section {
+    margin: 0 auto;
+  }
+}

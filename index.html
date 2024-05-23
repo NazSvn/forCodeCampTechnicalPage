@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Documentation Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>Use ESLint in Your Project</header>
+      <div class="nav-div">
+        <a class="nav-link" href="#Getting_Started_with_ESLint"
+          >Getting Started with ESLint</a
+        >
+        <a class="nav-link" href="#Prerequisites">Prerequisites</a>
+        <a class="nav-link" href="#Quick_start">Quick start</a>
+        <a class="nav-link" href="#Configuration">Configuration</a>
+        <a class="nav-link" href="#Global_Install">Global Install</a>
+        <a class="nav-link" href="#Manual_Set_Up">Manual Set Up</a>
+        <a class="nav-link" href="#Next_Steps">Next Steps</a>
+      </div>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Getting_Started_with_ESLint">
+        <header class="main-header">Getting Started with ESLint</header>
+        <p>
+          ESLint is a tool for identifying and reporting on patterns found in
+          ECMAScript/JavaScript code, with the goal of making code more
+          consistent and avoiding bugs.
+        </p>
+        <p>
+          ESLint is completely pluggable. Every single rule is a plugin and you
+          can add more at runtime. You can also add community plugins,
+          configurations, and parsers to extend the functionality of ESLint.
+        </p>
+      </section>
+      <section class="main-section" id="Prerequisites">
+        <header>Prerequisites</header>
+        <p>
+          To use ESLint, you must have
+          <a href="https://nodejs.org/en/" target="_blank">Node.js</a> (<code
+            class="inline-code"
+            >^18.18.0</code
+          >, <code class="inline-code">^20.9.0</code>, or
+          <code class="inline-code">&gt;=21.1.0</code>) installed and built with
+          SSL support. (If you are using an official Node.js distribution, SSL
+          is always built in.)
+        </p>
+      </section>
+      <section class="main-section" id="Quick_start">
+        <header>Quick start</header>
+        <p>You can install and configure ESLint using this command:</p>
+        <code class="code-block">npm init @eslint/config@latest </code>
+        <p>
+          If you want to use a specific shareable config that is hosted on npm,
+          you can use the <code class="inline-code">--config</code> option and
+          specify the package name:
+        </p>
+        <code class="code-block">
+          # use `eslint-config-standard` shared config <br />
+          # npm 7+<br />
+          npm init @eslint/config@latest -- --config eslint-config-standard >
+        </code>
+        <p>
+          <strong>Note:</strong>
+          <code class="inline-code">npm init @eslint/config</code> assumes you
+          have a <code class="inline-code">package.json</code> file already. If
+          you don’t, make sure to run
+          <code class="inline-code">npm init</code> or
+          <code class="inline-code">yarn init</code> beforehand.
+        </p>
+        <p>
+          After that, you can run ESLint on any file or directory like this:
+        </p>
+        <code class="code-block"
+          >npx eslint yourfile.js<br />
+
+          # or<br />
+
+          yarn run eslint yourfile.js
+        </code>
+      </section>
+      <section class="main-section" id="Configuration">
+        <header>Configuration</header>
+        <p>
+          <strong>Note:</strong> If you are coming from a version before 9.0.0
+          please see the
+          <a href="https://eslint.org/docs/latest/use/configure/migration-guide"
+            >migration guide</a
+          >.
+        </p>
+        <p>
+          After running
+          <code class="inline-code">npm init @eslint/config</code>, you’ll have
+          an <code class="inline-code">eslint.config.js</code> (or
+          <code class="inline-code">eslint.config.mjs</code>) file in your
+          directory. In it, you’ll see some rules configured like this:
+        </p>
+        <code class="code-block"
+          >// eslint.config.js<br />
+          export default [ { rules: { "no-unused-vars": "error", "no-undef":
+          "error" } } ];
+        </code>
+        <p>
+          The names <code class="inline-code">"no-unused-vars"</code> and
+          <code class="inline-code">"no-undef"</code> are the names of
+          <a href="https://eslint.org/docs/latest/rules">rules</a> in ESLint.
+          The first value is the error level of the rule and can be one of these
+          values:
+        </p>
+        <ul>
+          <li>
+            <code class="inline-code">"off"</code> or
+            <code class="inline-code">0</code> - turn the rule off
+          </li>
+          <li>
+            <code class="inline-code">"warn"</code> or
+            <code class="inline-code">1</code> - turn the rule on as a warning
+            (doesn’t affect exit code)
+          </li>
+          <li>
+            <code class="inline-code">"error"</code> or
+            <code class="inline-code">2</code> - turn the rule on as an error
+            (exit code will be 1)
+          </li>
+        </ul>
+        <p>
+          The three error levels allow you fine-grained control over how ESLint
+          applies rules (for more configuration options and details, see the
+          <a href="https://eslint.org/docs/latest/use/configure/"
+            >configuration docs</a
+          >).
+        </p>
+        <p>
+          Your <code class="inline-code">eslint.config.js</code> configuration
+          file will also include a recommended configuration, like this:
+        </p>
+        <code class="code-block"
+          >// eslint.config.js<br />
+          import js from "@eslint/js";<br />
+          export default [ js.configs.recommended, { rules: { "no-unused-vars":
+          "warn", "no-undef": "warn" } } ];</code
+        >
+        <p>
+          The <code class="inline-code">js.configs.recommended</code> object
+          contains configuration to ensure that all of the rules marked as
+          recommended on the
+          <a href="https://eslint.org/docs/latest/rules">rules page</a> will be
+          turned on. Alternatively, you can use configurations that others have
+          created by searching for “eslint-config” on
+          <a href="https://www.npmjs.com/search?q=eslint-config">npmjs.com</a>.
+          ESLint will not lint your code unless you extend from a shared
+          configuration or explicitly turn rules on in your configuration.
+        </p>
+      </section>
+      <section class="main-section" id="Global_Install">
+        <header>Global Install</header>
+        <p>
+          It is also possible to install ESLint globally, rather than locally,
+          using <code class="inline-code">npm install eslint --global</code>.
+          However, this is not recommended, and any plugins or shareable configs
+          that you use must still be installed locally if you install ESLint
+          globally.
+        </p>
+      </section>
+      <section class="main-section" id="Manual_Set_Up">
+        <header>Manual Set Up</header>
+        <p>You can also manually set up ESLint in your project.</p>
+        <p>
+          Before you begin, you must already have a
+          <code class="inline-code">package.json</code> file. If you don’t, make
+          sure to run <code class="inline-code">npm init</code> or
+          <code class="inline-code">yarn init</code> to create the file
+          beforehand.
+        </p>
+        <ol>
+          <li>
+            <p>Install the ESLint packages in your project:</p>
+            <code class="code-block">
+              npm install --save-dev eslint @eslint/js
+            </code>
+          </li>
+          <li>
+            <p>
+              Add an <code class="inline-code">eslint.config.js</code> file:
+            </p>
+            <code class="code-block">
+              # Create JavaScript configuration file touch eslint.config.js
+            </code>
+          </li>
+          <li>
+            <p>
+              Add configuration to the
+              <code class="inline-code">eslint.config.js</code> file. Refer to
+              the
+              <a href="https://eslint.org/docs/latest/use/configure/"
+                >Configure ESLint documentation</a
+              >
+              to learn how to add rules, custom configurations, plugins, and
+              more.
+            </p>
+            <code class="code-block"
+              >import js from "@eslint/js";<br />
+              export default [ js.configs.recommended, { rules: {
+              "no-unused-vars": "warn", "no-undef": "warn" } } ];</code
+            >
+          </li>
+          <li>
+            <p>Lint code using the ESLint CLI:</p>
+            <code class="code-block">npx eslint project-dir/ file1.js </code>
+            <p>
+              For more information on the available CLI options, refer to
+              <a
+                href="https://eslint.org/docs/latest/use/command-line-interface"
+                >Command Line Interface</a
+              >.
+            </p>
+          </li>
+        </ol>
+        <hr />
+      </section>
+      <section class="main-section" id="Next_Steps">
+        <header>Next Steps</header>
+        <ul>
+          <li>
+            Learn about
+            <a href="https://eslint.org/docs/latest/use/configure/"
+              >advanced configuration</a
+            >
+            of ESLint.
+          </li>
+          <li>
+            Get familiar with the
+            <a href="https://eslint.org/docs/latest/use/command-line-interface"
+              >command line options</a
+            >.
+          </li>
+          <li>
+            Explore
+            <a href="https://eslint.org/docs/latest/use/integrations"
+              >ESLint integrations</a
+            >
+            into other tools like editors, build systems, and more.
+          </li>
+          <li>
+            Can’t find just the right rule? Make your own
+            <a href="https://eslint.org/docs/latest/extend/custom-rules"
+              >custom rule</a
+            >.
+          </li>
+          <li>
+            Make ESLint even better by
+            <a href="https://eslint.org/docs/latest/contribute/">contributing</a
+            >.
+          </li>
+        </ul>
+        <hr />
+      </section>
+    </main>
+  </body>
+</html>
